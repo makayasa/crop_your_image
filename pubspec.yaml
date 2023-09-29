@@ -4,7 +4,8 @@ version: 0.7.5
 homepage: https://github.com/chooyan-eng/crop_your_image
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  # sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=2.18.1 <3.0.0"
 
 dependencies:
   flutter:
