@@ -88,8 +88,6 @@ class Crop extends StatelessWidget {
   /// [false] by default.
   final bool interactive;
 
-  final Widget? loadingWidget;
-
   const Crop({
     Key? key,
     required this.image,
@@ -109,7 +107,6 @@ class Crop extends StatelessWidget {
     this.fixArea = false,
     this.progressIndicator = const SizedBox.shrink(),
     this.interactive = false,
-    this.loadingWidget,
   })  : assert((initialSize ?? 1.0) <= 1.0, 'initialSize must be less than 1.0, or null meaning not specified.'),
         super(key: key);
 
@@ -124,7 +121,6 @@ class Crop extends StatelessWidget {
           data: newData,
           child: _CropEditor(
             image: image,
-            loadingWidget: loadingWidget,
             onCropped: onCropped,
             aspectRatio: aspectRatio,
             initialSize: initialSize,
@@ -166,7 +162,6 @@ class _CropEditor extends StatefulWidget {
   final bool fixArea;
   final Widget progressIndicator;
   final bool interactive;
-  final Widget? loadingWidget;
 
   const _CropEditor({
     Key? key,
@@ -187,7 +182,6 @@ class _CropEditor extends StatefulWidget {
     required this.fixArea,
     required this.progressIndicator,
     required this.interactive,
-    this.loadingWidget,
   }) : super(key: key);
 
   @override
@@ -441,7 +435,7 @@ class _CropEditorState extends State<_CropEditor> {
   @override
   Widget build(BuildContext context) {
     return _isImageLoading
-        ? Center(child: this.loadingWidget ?? widget.progressIndicator)
+        ? Center(child: widget.progressIndicator)
         : Stack(
             children: [
               Listener(
