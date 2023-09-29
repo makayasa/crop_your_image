@@ -89,6 +89,8 @@ class Crop extends StatelessWidget {
   /// [false] by default.
   final bool interactive;
 
+final Widget? loadingWidget;
+
   const Crop({
     Key? key,
     required this.image,
@@ -108,7 +110,7 @@ class Crop extends StatelessWidget {
     this.fixArea = false,
     this.progressIndicator = const SizedBox.shrink(),
     this.interactive = false,
-      this.loadingWidget,
+    this.loadingWidget,
   })  : assert((initialSize ?? 1.0) <= 1.0,
             'initialSize must be less than 1.0, or null meaning not specified.'),
         super(key: key);
@@ -165,7 +167,7 @@ class _CropEditor extends StatefulWidget {
   final bool fixArea;
   final Widget progressIndicator;
   final bool interactive;
-  final Widget? loadingWidget;
+  
 
   const _CropEditor({
     Key? key,
@@ -185,7 +187,6 @@ class _CropEditor extends StatefulWidget {
     this.cornerDotBuilder,
     required this.fixArea,
     required this.progressIndicator,
-    required this.interactive,
   }) : super(key: key);
 
   @override
