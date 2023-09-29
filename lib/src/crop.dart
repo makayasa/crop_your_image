@@ -714,7 +714,7 @@ image.Image _fromByteData(Uint8List data) {
 
   // check orientation
   // switch (tempImage?.exif.exifIfd.Orientation ?? -1) {
-  switch (tempImage?.exif.orientation ?? -1) {
+  switch (tempImage?.exif?.orientation ?? -1) {
     case 3:
       // return image.copyRotate(tempImage!, angle: 180);
       return image.copyRotate(tempImage!, 180);
